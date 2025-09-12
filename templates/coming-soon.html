@@ -13,61 +13,125 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #000000;
-            overflow: hidden;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
             height: 100vh;
             position: relative;
         }
 
-        /* 3D Canvas Background */
-        #canvas {
-            position: absolute;
+        /* Simplified Mobile-First Background */
+        .tech-bg {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1;
+            z-index: -2;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 70%);
         }
 
-        /* Gradient Overlay */
-        .gradient-overlay {
+        /* Subtle Circuit Lines - Reduced for Mobile */
+        .circuit-lines {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.1) 0%, rgba(147, 51, 234, 0.05) 50%, rgba(0, 0, 0, 0.8) 100%);
-            z-index: 2;
+            opacity: 0.1;
         }
 
-        /* Animated Grid */
-        .tech-grid {
+        .circuit-line {
             position: absolute;
-            top: 0;
+            background: linear-gradient(90deg, transparent, #00ff88, transparent);
+            animation: circuit-flow 6s linear infinite;
+        }
+
+        .circuit-line:nth-child(1) {
+            top: 20%;
             left: 0;
             width: 100%;
+            height: 1px;
+            animation-delay: 0s;
+        }
+
+        .circuit-line:nth-child(2) {
+            top: 80%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            animation-delay: 3s;
+        }
+
+        .circuit-line:nth-child(3) {
+            top: 0;
+            left: 30%;
+            width: 1px;
             height: 100%;
-            background-image: 
-                linear-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px);
-            background-size: 100px 100px;
-            animation: gridPulse 4s ease-in-out infinite;
-            z-index: 2;
+            animation-delay: 1.5s;
+            background: linear-gradient(180deg, transparent, #4ecdc4, transparent);
         }
 
-        @keyframes gridPulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
+        .circuit-line:nth-child(4) {
+            top: 0;
+            left: 70%;
+            width: 1px;
+            height: 100%;
+            animation-delay: 4.5s;
+            background: linear-gradient(180deg, transparent, #00ff88, transparent);
         }
 
-        /* Floating Code Elements */
+        @keyframes circuit-flow {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Optimized Floating Particles */
+        .bg-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .bg-particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00ff88;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .bg-particle:nth-child(2n) {
+            background: #4ecdc4;
+            animation-duration: 10s;
+        }
+
+        .bg-particle:nth-child(3n) {
+            background: #00a8ff;
+            animation-duration: 12s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-50px) rotate(180deg);
+                opacity: 0.8;
+            }
+        }
+
+        /* Simplified Code Elements for Mobile */
         .code-element {
             position: absolute;
-            color: rgba(6, 182, 212, 0.4);
+            color: rgba(0, 255, 136, 0.4);
             font-family: 'Monaco', 'Menlo', monospace;
-            font-size: 14px;
-            z-index: 3;
-            animation: codeFloat 8s linear infinite;
+            font-size: clamp(10px, 3vw, 14px);
+            z-index: 1;
+            animation: codeFloat 10s linear infinite;
+            pointer-events: none;
         }
 
         @keyframes codeFloat {
@@ -76,52 +140,15 @@
                 opacity: 0;
             }
             10% {
-                opacity: 1;
+                opacity: 0.6;
             }
             90% {
-                opacity: 1;
+                opacity: 0.6;
             }
             100% {
-                transform: translateY(-100px) translateX(50px);
+                transform: translateY(-100px) translateX(30px);
                 opacity: 0;
             }
-        }
-
-        /* Glowing Dots Network */
-        .dot {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: #06b6d4;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #06b6d4;
-            z-index: 3;
-            animation: dotPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes dotPulse {
-            0%, 100% { 
-                transform: scale(1);
-                box-shadow: 0 0 10px #06b6d4;
-            }
-            50% { 
-                transform: scale(1.5);
-                box-shadow: 0 0 20px #06b6d4, 0 0 30px #06b6d4;
-            }
-        }
-
-        /* Lines connecting dots */
-        .line {
-            position: absolute;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.3), transparent);
-            z-index: 2;
-            animation: lineGlow 4s ease-in-out infinite;
-        }
-
-        @keyframes lineGlow {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.8; }
         }
 
         /* Main Content Container */
@@ -134,23 +161,24 @@
             align-items: center;
             height: 100vh;
             text-align: center;
-            padding: 20px;
+            padding: clamp(1rem, 4vw, 2rem);
         }
 
-        /* Logo */
+        /* Logo with Consistent Theme */
         .logo {
-            font-size: clamp(2rem, 8vw, 5rem);
+            font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 800;
-            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 25%, #8b5cf6 50%, #ec4899 75%, #06b6d4 100%);
+            background: linear-gradient(45deg, #00ff88, #4ecdc4, #00a8ff);
             background-size: 400% 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: logoShift 6s ease-in-out infinite;
-            margin-bottom: 2rem;
-            letter-spacing: -2px;
-            text-shadow: 0 0 40px rgba(6, 182, 212, 0.3);
-            filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.2));
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            letter-spacing: clamp(-1px, -0.5vw, -2px);
+            text-shadow: 0 0 40px rgba(0, 255, 136, 0.3);
+            filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.2));
+            line-height: 1.1;
         }
 
         @keyframes logoShift {
@@ -162,11 +190,11 @@
 
         /* Coming Soon Text */
         .coming-soon {
-            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-size: clamp(1rem, 4vw, 1.5rem);
             color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 3rem;
+            margin-bottom: clamp(2rem, 6vw, 3rem);
             font-weight: 300;
-            letter-spacing: clamp(2px, 1vw, 8px);
+            letter-spacing: clamp(2px, 2vw, 8px);
             text-transform: uppercase;
             opacity: 0;
             animation: fadeInUp 2s ease-out 0.8s forwards;
@@ -181,7 +209,7 @@
             transform: translateX(-50%);
             width: 100px;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+            background: linear-gradient(90deg, transparent, #00ff88, transparent);
             animation: underlineGlow 3s ease-in-out infinite;
         }
 
@@ -205,14 +233,15 @@
         .home-button {
             display: inline-flex;
             align-items: center;
-            padding: 15px 35px;
-            background: rgba(6, 182, 212, 0.1);
-            color: #06b6d4;
+            gap: clamp(0.5rem, 2vw, 0.75rem);
+            padding: clamp(12px, 4vw, 18px) clamp(24px, 6vw, 40px);
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
             text-decoration: none;
-            border: 1px solid rgba(6, 182, 212, 0.3);
-            border-radius: 12px;
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            font-weight: 500;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 50px;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            font-weight: 600;
             letter-spacing: 1px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
@@ -220,6 +249,7 @@
             opacity: 0;
             animation: fadeInUp 2s ease-out 1.2s forwards;
             backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
         }
 
         .home-button::before {
@@ -229,7 +259,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
             transition: all 0.6s ease;
         }
 
@@ -238,64 +268,80 @@
         }
 
         .home-button:hover {
-            background: rgba(6, 182, 212, 0.2);
-            border-color: #06b6d4;
+            background: rgba(0, 255, 136, 0.2);
+            border-color: #00ff88;
             box-shadow: 
-                0 0 30px rgba(6, 182, 212, 0.3),
-                0 10px 30px rgba(6, 182, 212, 0.1);
-            transform: translateY(-2px);
+                0 0 30px rgba(0, 255, 136, 0.4),
+                0 15px 40px rgba(0, 255, 136, 0.2);
+            transform: translateY(-3px);
             color: #ffffff;
         }
 
         .home-button::after {
             content: '→';
-            margin-left: 8px;
             transition: transform 0.3s ease;
+            font-size: 1.2em;
         }
 
         .home-button:hover::after {
             transform: translateX(4px);
         }
 
-        /* Responsive Design */
+        /* Mobile Optimizations */
         @media (max-width: 768px) {
             .container {
-                padding: 15px;
+                padding: 1rem;
+                justify-content: center;
             }
             
             .logo {
-                letter-spacing: -1px;
                 margin-bottom: 1.5rem;
             }
             
             .coming-soon {
                 margin-bottom: 2.5rem;
+                letter-spacing: 2px;
             }
             
             .home-button {
-                padding: 12px 28px;
+                padding: 14px 28px;
+                font-size: 1rem;
             }
-            
-            .tech-grid {
-                background-size: 50px 50px;
+
+            /* Reduce particle count for mobile performance */
+            .bg-particle:nth-child(n+11) {
+                display: none;
+            }
+
+            /* Simplify animations for mobile */
+            .code-element:nth-child(n+4) {
+                display: none;
             }
         }
 
         @media (max-width: 480px) {
             .container {
-                padding: 10px;
+                padding: 1rem;
             }
             
             .logo {
                 letter-spacing: 0;
+                margin-bottom: 1.5rem;
             }
             
             .coming-soon {
                 margin-bottom: 2rem;
+                letter-spacing: 1px;
             }
             
             .home-button {
-                padding: 10px 24px;
+                padding: 12px 24px;
+                font-size: 0.95rem;
+            }
+
+            /* Further reduce animations for small screens */
+            .bg-particle:nth-child(n+6) {
+                display: none;
             }
         }
 
@@ -307,12 +353,47 @@
                 transition-duration: 0.01ms !important;
             }
         }
+
+        /* Touch device optimizations */
+        @media (hover: none) {
+            .home-button:hover {
+                transform: none;
+                background: rgba(0, 255, 136, 0.15);
+            }
+            
+            .home-button:active {
+                transform: scale(0.98);
+                background: rgba(0, 255, 136, 0.25);
+            }
+        }
+
+        /* Landscape mobile orientation */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .container {
+                padding: 0.5rem 1rem;
+            }
+            
+            .logo {
+                font-size: clamp(2rem, 6vw, 3rem);
+            }
+            
+            .coming-soon {
+                margin-bottom: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <canvas id="canvas"></canvas>
-    <div class="gradient-overlay"></div>
-    <div class="tech-grid"></div>
+    <!-- Tech Background -->
+    <div class="tech-bg">
+        <div class="circuit-lines">
+            <div class="circuit-line"></div>
+            <div class="circuit-line"></div>
+            <div class="circuit-line"></div>
+            <div class="circuit-line"></div>
+        </div>
+        <div class="bg-particles" id="bg-particles"></div>
+    </div>
     
     <div class="container">
         <h1 class="logo">SYNTAX SYNDICATE</h1>
@@ -321,187 +402,84 @@
     </div>
 
     <script>
-        // 3D Canvas Animation
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
+        // Mobile-optimized particle system
+        function createBgParticles() {
+            const particlesContainer = document.getElementById('bg-particles');
+            const isMobile = window.innerWidth <= 768;
+            const particleCount = isMobile ? 10 : 25; // Reduced count for mobile
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        // Particle System
-        class Particle {
-            constructor() {
-                this.reset();
-                this.y = Math.random() * canvas.height;
-            }
-
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = -10;
-                this.speed = Math.random() * 2 + 0.5;
-                this.opacity = Math.random() * 0.5 + 0.2;
-                this.size = Math.random() * 3 + 1;
-            }
-
-            update() {
-                this.y += this.speed;
-                if (this.y > canvas.height + 10) {
-                    this.reset();
-                }
-            }
-
-            draw() {
-                ctx.save();
-                ctx.globalAlpha = this.opacity;
-                ctx.fillStyle = '#06b6d4';
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = '#06b6d4';
-                ctx.fillRect(this.x, this.y, this.size, this.size);
-                ctx.restore();
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'bg-particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particlesContainer.appendChild(particle);
             }
         }
 
-        // Create particles
-        const particles = [];
-        for (let i = 0; i < 50; i++) {
-            particles.push(new Particle());
-        }
-
-        // Neural Network Lines
-        class NetworkNode {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.connections = [];
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            }
-
-            draw() {
-                // Draw connections
-                ctx.strokeStyle = 'rgba(6, 182, 212, 0.1)';
-                ctx.lineWidth = 1;
-                this.connections.forEach(node => {
-                    ctx.beginPath();
-                    ctx.moveTo(this.x, this.y);
-                    ctx.lineTo(node.x, node.y);
-                    ctx.stroke();
-                });
-
-                // Draw node
-                ctx.fillStyle = 'rgba(6, 182, 212, 0.6)';
-                ctx.shadowBlur = 5;
-                ctx.shadowColor = '#06b6d4';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        // Create network nodes
-        const nodes = [];
-        for (let i = 0; i < 15; i++) {
-            nodes.push(new NetworkNode());
-        }
-
-        // Connect nearby nodes
-        function connectNodes() {
-            nodes.forEach(node => {
-                node.connections = [];
-                nodes.forEach(otherNode => {
-                    if (node !== otherNode) {
-                        const distance = Math.hypot(node.x - otherNode.x, node.y - otherNode.y);
-                        if (distance < 150) {
-                            node.connections.push(otherNode);
-                        }
-                    }
-                });
-            });
-        }
-
-        // Animation loop
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Update and draw particles
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-
-            // Update and draw network
-            connectNodes();
-            nodes.forEach(node => {
-                node.update();
-                node.draw();
-            });
-
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-
-        // Add floating code elements
+        // Optimized code elements
         function createCodeElement() {
+            // Reduce frequency on mobile
+            if (window.innerWidth <= 768 && Math.random() > 0.3) return;
+
             const codeSnippets = [
-                'function()', '=> {}', 'const x =', 'import {', 'class App', 'return;', 
-                '<div>', 'useState()', 'async/await', 'try/catch', '{ ...props }', 
-                'map()', 'filter()', 'reduce()', 'useState', 'useEffect', 'API_KEY'
+                'function()', '=>', 'const x =', 'import {', 'class App', 'return;', 
+                '<div>', 'useState()', 'async', 'try/catch', '{ props }', 
+                'map()', 'filter()', 'reduce()', 'API_KEY'
             ];
             
             const element = document.createElement('div');
             element.className = 'code-element';
             element.textContent = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
             element.style.left = Math.random() * (window.innerWidth - 100) + 'px';
-            element.style.animationDelay = Math.random() * 5 + 's';
-            element.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            element.style.animationDelay = Math.random() * 3 + 's';
+            element.style.animationDuration = (Math.random() * 4 + 8) + 's';
             
             document.body.appendChild(element);
             
             setTimeout(() => {
                 element.remove();
-            }, 10000);
+            }, 12000);
         }
 
-        // Create code elements periodically
-        setInterval(createCodeElement, 2000);
-
-        // Mouse interaction
-        let mouseX = 0, mouseY = 0;
-        
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createBgParticles();
             
-            // Attract nearby nodes to mouse
-            nodes.forEach(node => {
-                const distance = Math.hypot(node.x - mouseX, node.y - mouseY);
-                if (distance < 100) {
-                    const force = (100 - distance) / 100;
-                    const angle = Math.atan2(mouseY - node.y, mouseX - node.x);
-                    node.vx += Math.cos(angle) * force * 0.01;
-                    node.vy += Math.sin(angle) * force * 0.01;
-                }
-            });
+            // Create initial code elements
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => createCodeElement(), i * 2000);
+            }
+            
+            // Create code elements periodically with mobile optimization
+            const interval = window.innerWidth <= 768 ? 5000 : 3000;
+            setInterval(createCodeElement, interval);
         });
 
-        // Initialize with some code elements
-        for (let i = 0; i < 5; i++) {
-            setTimeout(createCodeElement, i * 1000);
+        // Optimized mouse interaction (desktop only)
+        if (window.innerWidth > 768) {
+            document.addEventListener('mousemove', (e) => {
+                const container = document.querySelector('.container');
+                const x = (e.clientX / window.innerWidth) * 100;
+                const y = (e.clientY / window.innerHeight) * 100;
+                
+                container.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(0, 255, 136, 0.05) 0%, transparent 50%)`;
+            });
         }
+
+        // Handle orientation changes
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                location.reload();
+            }, 100);
+        });
+
+        // Preload fonts for better performance
+        const link = document.createElement('link');
+        link.rel = 'preconnect';
+        link.href = 'https://fonts.googleapis.com';
+        document.head.appendChild(link);
     </script>
 </body>
 </html>
