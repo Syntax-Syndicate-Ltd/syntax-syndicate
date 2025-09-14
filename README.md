@@ -39,8 +39,7 @@ Our platform unites learners from multiple institutes, offering:
 
 ```ascii
     ╭─────────────────────╮
-    │    Learn • Build    │
-    │        • Grow       │
+    │ •Learn •Build •Grow │
     ├─────────────────────┤
        🎓 Students         
        💼 Professionals   
