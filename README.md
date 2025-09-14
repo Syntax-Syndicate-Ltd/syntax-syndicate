@@ -152,18 +152,18 @@ graph TD
 <td align="center" width="33%">
 <img src="https://via.placeholder.com/120x120/4285f4/ffffff?text=PK" width="120" height="120" style="border-radius: 60px;">
 <br><b>Piyush Koli</b><br>
-<sub><i>Founder & Strategic Lead</i></sub><br>
+<sub><i>Founder</i></sub><br>
 <small>Content direction • Community coordination</small>
 </td>
 <td align="center" width="33%">
 <img src="https://via.placeholder.com/120x120/34a853/ffffff?text=AJ" width="120" height="120" style="border-radius: 60px;">
 <br><b>Adinath Jagtap</b><br>
-<sub><i>Co-founder & Principal Developer</i></sub><br>
+<sub><i>Co-founder</i></sub><br>
 <small>Site architecture • Deployment</small>
 </td>
 <td align="center" width="33%">
 <img src="https://via.placeholder.com/120x120/ea4335/ffffff?text=C+" width="120" height="120" style="border-radius: 60px;">
-<br><b>Community Contributors</b><br>
+<br><b>Community Leaders</b><br>
 <sub><i>Volunteers & Mentors</i></sub><br>
 <small>Workshops • Content • Testing • Promotion</small>
 </td>
