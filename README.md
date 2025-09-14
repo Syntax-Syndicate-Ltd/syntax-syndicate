@@ -42,9 +42,9 @@ Our platform unites learners from multiple institutes, offering:
     │    Learn • Build    │
     │        • Grow       │
     ├─────────────────────┤
-    │  🎓 Students        │
-    │  💼 Professionals   │
-    │  🌱 Mentors         │
+       🎓 Students         
+       💼 Professionals   
+       🌱 Mentors         
     ╰─────────────────────╯
 ```
 
